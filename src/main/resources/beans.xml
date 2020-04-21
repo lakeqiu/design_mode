@@ -1,0 +1,6 @@
+<beans>
+    <bean id="person" class="com.lakeqiu.design_mode.factory.di.Person" scope="singleton" lazy-init="false">
+        <constructor-arg type="String" value="李四" />
+        <constructor-arg type="String" value="19" />
+    </bean>
+</beans>

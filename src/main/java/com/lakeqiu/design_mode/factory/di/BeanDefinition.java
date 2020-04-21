@@ -10,6 +10,7 @@ import java.util.List;
 public class BeanDefinition {
     private String id;
     private String className;
+    // bean属性
     private List<ConstructorArg> constructorArgs = new ArrayList<>();
     private Scope scope = Scope.SINGLETON;
     private boolean lazyInit = false;
@@ -56,11 +57,13 @@ public class BeanDefinition {
         PROTOTYPE
     }
 
+    // bean的属性
     public static class ConstructorArg {
-        // 是否依赖其他bean
+        // 是否是用户创建的其他bean
         private boolean isRef;
+        // 属性类型
         private Class type;
-        // 依赖的bean信息
+        // 属性值
         private Object arg;
 
         private ConstructorArg(Builder builder) {

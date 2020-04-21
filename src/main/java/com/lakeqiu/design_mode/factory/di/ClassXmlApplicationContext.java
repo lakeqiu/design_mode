@@ -55,6 +55,6 @@ public class ClassXmlApplicationContext implements ApplicationContext {
 
     @Override
     public Object getBean(String beanId) {
-        return null;
+        return beansFactory.getBean(beanId);
     }
 }

@@ -48,12 +48,13 @@ public class BeansFactory {
             Class beanClass = Class.forName(beanDefinition.getClassName());
             List<BeanDefinition.ConstructorArg> args = beanDefinition.getConstructorArgs();
 
-            // bean没有懒加载、依赖等其他信息，直接创建即可
+            // bean没有懒加载、属性等其他信息，直接创建即可
             if (args.isEmpty()) {
                 bean = beanClass.newInstance();
             } else {
-                //
+                // 获取属性类型
                 Class[] argClasses = new Class[args.size()];
+                // 获取属性值
                 Object[] argObjects = new Object[args.size()];
                 for (int i = 0; i < args.size(); i++) {
                     BeanDefinition.ConstructorArg arg = args.get(i);
@@ -72,6 +73,7 @@ public class BeansFactory {
                         creatBean(refBeanDefinition);
                     }
                 }
+                // 获取对应构造方法创建对象
                 bean = beanClass.getConstructor(argClasses).newInstance(argObjects);
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
